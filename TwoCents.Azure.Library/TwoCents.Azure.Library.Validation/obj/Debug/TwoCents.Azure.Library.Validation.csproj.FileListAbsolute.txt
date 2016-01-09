@@ -1,0 +1,4 @@
+C:\GitHub.TwoCents\TwoCents-AzureWorkflow\TwoCents.Azure.Library\TwoCents.Azure.Library.Validation\bin\Debug\TwoCents.Azure.Library.Validation.dll
+C:\GitHub.TwoCents\TwoCents-AzureWorkflow\TwoCents.Azure.Library\TwoCents.Azure.Library.Validation\bin\Debug\TwoCents.Azure.Library.Validation.pdb
+C:\GitHub.TwoCents\TwoCents-AzureWorkflow\TwoCents.Azure.Library\TwoCents.Azure.Library.Validation\obj\Debug\TwoCents.Azure.Library.Validation.dll
+C:\GitHub.TwoCents\TwoCents-AzureWorkflow\TwoCents.Azure.Library\TwoCents.Azure.Library.Validation\obj\Debug\TwoCents.Azure.Library.Validation.pdb

@@ -1,0 +1,10 @@
+C:\GitHub.TwoCents\TwoCents-AzureWorkflow\TwoCents.Azure.Library\TwoCents.Azure.Library.WebAPI\bin\Debug\TwoCents.Azure.Library.WebAPI.dll
+C:\GitHub.TwoCents\TwoCents-AzureWorkflow\TwoCents.Azure.Library\TwoCents.Azure.Library.WebAPI\bin\Debug\TwoCents.Azure.Library.WebAPI.pdb
+C:\GitHub.TwoCents\TwoCents-AzureWorkflow\TwoCents.Azure.Library\TwoCents.Azure.Library.WebAPI\bin\Debug\Newtonsoft.Json.dll
+C:\GitHub.TwoCents\TwoCents-AzureWorkflow\TwoCents.Azure.Library\TwoCents.Azure.Library.WebAPI\bin\Debug\System.Net.Http.Formatting.dll
+C:\GitHub.TwoCents\TwoCents-AzureWorkflow\TwoCents.Azure.Library\TwoCents.Azure.Library.WebAPI\bin\Debug\System.Web.Http.dll
+C:\GitHub.TwoCents\TwoCents-AzureWorkflow\TwoCents.Azure.Library\TwoCents.Azure.Library.WebAPI\bin\Debug\Newtonsoft.Json.xml
+C:\GitHub.TwoCents\TwoCents-AzureWorkflow\TwoCents.Azure.Library\TwoCents.Azure.Library.WebAPI\bin\Debug\System.Net.Http.Formatting.xml
+C:\GitHub.TwoCents\TwoCents-AzureWorkflow\TwoCents.Azure.Library\TwoCents.Azure.Library.WebAPI\bin\Debug\System.Web.Http.xml
+C:\GitHub.TwoCents\TwoCents-AzureWorkflow\TwoCents.Azure.Library\TwoCents.Azure.Library.WebAPI\obj\Debug\TwoCents.Azure.Library.WebAPI.dll
+C:\GitHub.TwoCents\TwoCents-AzureWorkflow\TwoCents.Azure.Library\TwoCents.Azure.Library.WebAPI\obj\Debug\TwoCents.Azure.Library.WebAPI.pdb

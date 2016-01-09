@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WorkflowAdminDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Faults">
+    <Key>
+      <PropertyRef Name="FaultId" />
+    </Key>
+    <Property Name="FaultId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ErrorType" Type="varchar" MaxLength="20" />
+    <Property Name="Entity" Type="varchar" MaxLength="20" />
+    <Property Name="EntityId" Type="varchar" MaxLength="50" />
+    <Property Name="ErrorMessage" Type="varchar(max)" />
+    <Property Name="ErrorDetails" Type="varchar(max)" />
+    <Property Name="ErrorDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ProcessDefinitions">
+    <Key>
+      <PropertyRef Name="ProcessId" />
+      <PropertyRef Name="StepId" />
+    </Key>
+    <Property Name="ProcessId" Type="bigint" Nullable="false" />
+    <Property Name="StepId" Type="bigint" Nullable="false" />
+    <Property Name="Sequence" Type="int" />
+    <Property Name="Status" Type="varchar" MaxLength="15" />
+    <Property Name="Notification" Type="varchar" MaxLength="10" />
+    <Property Name="IsLastStep" Type="bit" />
+  </EntityType>
+  <EntityType Name="Processes">
+    <Key>
+      <PropertyRef Name="ProcessId" />
+    </Key>
+    <Property Name="ProcessId" Type="bigint" Nullable="false" />
+    <Property Name="SourceSystem" Type="varchar" MaxLength="20" />
+    <Property Name="MessageType" Type="varchar" MaxLength="50" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+    <Property Name="ResolveProcess" Type="bit" />
+  </EntityType>
+  <EntityType Name="ProcessFlow">
+    <Key>
+      <PropertyRef Name="SequenceId" />
+    </Key>
+    <Property Name="SequenceId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Entity" Type="varchar" MaxLength="30" />
+    <Property Name="EntityId" Type="varchar" MaxLength="50" />
+    <Property Name="ProcessId" Type="bigint" />
+    <Property Name="StepId" Type="bigint" />
+    <Property Name="Sequence" Type="int" />
+    <Property Name="Status" Type="varchar" MaxLength="15" />
+    <Property Name="Notification" Type="varchar" MaxLength="15" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="IsLastStep" Type="bit" />
+  </EntityType>
+  <EntityType Name="ProcessFlowBU">
+    <Key>
+      <PropertyRef Name="SequenceId" />
+    </Key>
+    <Property Name="SequenceId" Type="bigint" Nullable="false" />
+    <Property Name="Entity" Type="varchar" MaxLength="30" />
+    <Property Name="EntityId" Type="varchar" MaxLength="50" />
+    <Property Name="ProcessId" Type="bigint" />
+    <Property Name="StepId" Type="bigint" />
+    <Property Name="Sequence" Type="int" />
+    <Property Name="Status" Type="varchar" MaxLength="15" />
+    <Property Name="Notification" Type="varchar" MaxLength="15" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="IsLastStep" Type="bit" />
+  </EntityType>
+  <EntityType Name="ProcessSteps">
+    <Key>
+      <PropertyRef Name="StepId" />
+    </Key>
+    <Property Name="StepId" Type="bigint" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="30" />
+    <Property Name="Version" Type="varchar" MaxLength="3" />
+  </EntityType>
+  <Association Name="FK_ProcessDefinitions_Processes">
+    <End Role="Processes" Type="Self.Processes" Multiplicity="1" />
+    <End Role="ProcessDefinitions" Type="Self.ProcessDefinitions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Processes">
+        <PropertyRef Name="ProcessId" />
+      </Principal>
+      <Dependent Role="ProcessDefinitions">
+        <PropertyRef Name="ProcessId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProcessDefinitions_ProcessSteps">
+    <End Role="ProcessSteps" Type="Self.ProcessSteps" Multiplicity="1" />
+    <End Role="ProcessDefinitions" Type="Self.ProcessDefinitions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProcessSteps">
+        <PropertyRef Name="StepId" />
+      </Principal>
+      <Dependent Role="ProcessDefinitions">
+        <PropertyRef Name="StepId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="WorkflowAdminDbModelStoreContainer">
+    <EntitySet Name="Faults" EntityType="Self.Faults" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProcessDefinitions" EntityType="Self.ProcessDefinitions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Processes" EntityType="Self.Processes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProcessFlow" EntityType="Self.ProcessFlow" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProcessFlowBU" EntityType="Self.ProcessFlowBU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProcessSteps" EntityType="Self.ProcessSteps" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_ProcessDefinitions_Processes" Association="Self.FK_ProcessDefinitions_Processes">
+      <End Role="Processes" EntitySet="Processes" />
+      <End Role="ProcessDefinitions" EntitySet="ProcessDefinitions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProcessDefinitions_ProcessSteps" Association="Self.FK_ProcessDefinitions_ProcessSteps">
+      <End Role="ProcessSteps" EntitySet="ProcessSteps" />
+      <End Role="ProcessDefinitions" EntitySet="ProcessDefinitions" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwoCents.Azure.Library.Error", "TwoCents.Azure.Library.Error\TwoCents.Azure.Library.Error.csproj", "{68579D98-351E-4F2A-B4DE-0A5163243A6B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwoCents.Azure.Library.Process", "TwoCents.Azure.Library.Process\TwoCents.Azure.Library.Process.csproj", "{182BBC78-D377-4AF4-A88C-5AF7A51D82F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwoCents.Azure.Library.Validation", "TwoCents.Azure.Library.Validation\TwoCents.Azure.Library.Validation.csproj", "{64A2E1E6-F290-4A42-8C36-EB62568E89A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwoCents.Azure.Library.WebAPI", "TwoCents.Azure.Library.WebAPI\TwoCents.Azure.Library.WebAPI.csproj", "{0F11782E-6E45-4F05-B53E-7381321E4522}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{68579D98-351E-4F2A-B4DE-0A5163243A6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68579D98-351E-4F2A-B4DE-0A5163243A6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68579D98-351E-4F2A-B4DE-0A5163243A6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68579D98-351E-4F2A-B4DE-0A5163243A6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{182BBC78-D377-4AF4-A88C-5AF7A51D82F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{182BBC78-D377-4AF4-A88C-5AF7A51D82F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{182BBC78-D377-4AF4-A88C-5AF7A51D82F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{182BBC78-D377-4AF4-A88C-5AF7A51D82F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64A2E1E6-F290-4A42-8C36-EB62568E89A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64A2E1E6-F290-4A42-8C36-EB62568E89A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64A2E1E6-F290-4A42-8C36-EB62568E89A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64A2E1E6-F290-4A42-8C36-EB62568E89A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F11782E-6E45-4F05-B53E-7381321E4522}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F11782E-6E45-4F05-B53E-7381321E4522}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F11782E-6E45-4F05-B53E-7381321E4522}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F11782E-6E45-4F05-B53E-7381321E4522}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

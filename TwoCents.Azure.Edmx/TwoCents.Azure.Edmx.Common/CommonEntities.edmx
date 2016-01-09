@@ -1,0 +1,353 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="WorkflowAdminDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Faults">
+          <Key>
+            <PropertyRef Name="FaultId" />
+          </Key>
+          <Property Name="FaultId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ErrorType" Type="varchar" MaxLength="20" />
+          <Property Name="Entity" Type="varchar" MaxLength="20" />
+          <Property Name="EntityId" Type="varchar" MaxLength="50" />
+          <Property Name="ErrorMessage" Type="varchar(max)" />
+          <Property Name="ErrorDetails" Type="varchar(max)" />
+          <Property Name="ErrorDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ProcessDefinitions">
+          <Key>
+            <PropertyRef Name="ProcessId" />
+            <PropertyRef Name="StepId" />
+          </Key>
+          <Property Name="ProcessId" Type="bigint" Nullable="false" />
+          <Property Name="StepId" Type="bigint" Nullable="false" />
+          <Property Name="Sequence" Type="int" />
+          <Property Name="Status" Type="varchar" MaxLength="15" />
+          <Property Name="Notification" Type="varchar" MaxLength="10" />
+          <Property Name="IsLastStep" Type="bit" />
+        </EntityType>
+        <EntityType Name="Processes">
+          <Key>
+            <PropertyRef Name="ProcessId" />
+          </Key>
+          <Property Name="ProcessId" Type="bigint" Nullable="false" />
+          <Property Name="SourceSystem" Type="varchar" MaxLength="20" />
+          <Property Name="MessageType" Type="varchar" MaxLength="50" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="ResolveProcess" Type="bit" />
+        </EntityType>
+        <EntityType Name="ProcessFlow">
+          <Key>
+            <PropertyRef Name="SequenceId" />
+          </Key>
+          <Property Name="SequenceId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Entity" Type="varchar" MaxLength="30" />
+          <Property Name="EntityId" Type="varchar" MaxLength="50" />
+          <Property Name="ProcessId" Type="bigint" />
+          <Property Name="StepId" Type="bigint" />
+          <Property Name="Sequence" Type="int" />
+          <Property Name="Status" Type="varchar" MaxLength="15" />
+          <Property Name="Notification" Type="varchar" MaxLength="15" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="IsLastStep" Type="bit" />
+        </EntityType>
+        <EntityType Name="ProcessFlowBU">
+          <Key>
+            <PropertyRef Name="SequenceId" />
+          </Key>
+          <Property Name="SequenceId" Type="bigint" Nullable="false" />
+          <Property Name="Entity" Type="varchar" MaxLength="30" />
+          <Property Name="EntityId" Type="varchar" MaxLength="50" />
+          <Property Name="ProcessId" Type="bigint" />
+          <Property Name="StepId" Type="bigint" />
+          <Property Name="Sequence" Type="int" />
+          <Property Name="Status" Type="varchar" MaxLength="15" />
+          <Property Name="Notification" Type="varchar" MaxLength="15" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="IsLastStep" Type="bit" />
+        </EntityType>
+        <EntityType Name="ProcessSteps">
+          <Key>
+            <PropertyRef Name="StepId" />
+          </Key>
+          <Property Name="StepId" Type="bigint" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="30" />
+          <Property Name="Version" Type="varchar" MaxLength="3" />
+        </EntityType>
+        <Association Name="FK_ProcessDefinitions_Processes">
+          <End Role="Processes" Type="Self.Processes" Multiplicity="1" />
+          <End Role="ProcessDefinitions" Type="Self.ProcessDefinitions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Processes">
+              <PropertyRef Name="ProcessId" />
+            </Principal>
+            <Dependent Role="ProcessDefinitions">
+              <PropertyRef Name="ProcessId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProcessDefinitions_ProcessSteps">
+          <End Role="ProcessSteps" Type="Self.ProcessSteps" Multiplicity="1" />
+          <End Role="ProcessDefinitions" Type="Self.ProcessDefinitions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProcessSteps">
+              <PropertyRef Name="StepId" />
+            </Principal>
+            <Dependent Role="ProcessDefinitions">
+              <PropertyRef Name="StepId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WorkflowAdminDbModelStoreContainer">
+          <EntitySet Name="Faults" EntityType="Self.Faults" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProcessDefinitions" EntityType="Self.ProcessDefinitions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Processes" EntityType="Self.Processes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProcessFlow" EntityType="Self.ProcessFlow" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProcessFlowBU" EntityType="Self.ProcessFlowBU" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProcessSteps" EntityType="Self.ProcessSteps" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ProcessDefinitions_Processes" Association="Self.FK_ProcessDefinitions_Processes">
+            <End Role="Processes" EntitySet="Processes" />
+            <End Role="ProcessDefinitions" EntitySet="ProcessDefinitions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProcessDefinitions_ProcessSteps" Association="Self.FK_ProcessDefinitions_ProcessSteps">
+            <End Role="ProcessSteps" EntitySet="ProcessSteps" />
+            <End Role="ProcessDefinitions" EntitySet="ProcessDefinitions" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WorkflowAdminDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Fault">
+          <Key>
+            <PropertyRef Name="FaultId" />
+          </Key>
+          <Property Name="FaultId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ErrorType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Entity" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="EntityId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ErrorMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ErrorDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ErrorDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="ProcessDefinition">
+          <Key>
+            <PropertyRef Name="ProcessId" />
+            <PropertyRef Name="StepId" />
+          </Key>
+          <Property Name="ProcessId" Type="Int64" Nullable="false" />
+          <Property Name="StepId" Type="Int64" Nullable="false" />
+          <Property Name="Sequence" Type="Int32" />
+          <Property Name="Status" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Notification" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="IsLastStep" Type="Boolean" />
+          <NavigationProperty Name="Process" Relationship="Self.FK_ProcessDefinitions_Processes" FromRole="ProcessDefinitions" ToRole="Processes" />
+          <NavigationProperty Name="ProcessStep" Relationship="Self.FK_ProcessDefinitions_ProcessSteps" FromRole="ProcessDefinitions" ToRole="ProcessSteps" />
+        </EntityType>
+        <EntityType Name="Process">
+          <Key>
+            <PropertyRef Name="ProcessId" />
+          </Key>
+          <Property Name="ProcessId" Type="Int64" Nullable="false" />
+          <Property Name="SourceSystem" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MessageType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ResolveProcess" Type="Boolean" />
+          <NavigationProperty Name="ProcessDefinitions" Relationship="Self.FK_ProcessDefinitions_Processes" FromRole="Processes" ToRole="ProcessDefinitions" />
+        </EntityType>
+        <EntityType Name="ProcessFlow">
+          <Key>
+            <PropertyRef Name="SequenceId" />
+          </Key>
+          <Property Name="SequenceId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Entity" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="EntityId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProcessId" Type="Int64" />
+          <Property Name="StepId" Type="Int64" />
+          <Property Name="Sequence" Type="Int32" />
+          <Property Name="Status" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Notification" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="IsLastStep" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="ProcessFlowBU">
+          <Key>
+            <PropertyRef Name="SequenceId" />
+          </Key>
+          <Property Name="SequenceId" Type="Int64" Nullable="false" />
+          <Property Name="Entity" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="EntityId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProcessId" Type="Int64" />
+          <Property Name="StepId" Type="Int64" />
+          <Property Name="Sequence" Type="Int32" />
+          <Property Name="Status" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Notification" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="IsLastStep" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="ProcessStep">
+          <Key>
+            <PropertyRef Name="StepId" />
+          </Key>
+          <Property Name="StepId" Type="Int64" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Version" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ProcessDefinitions" Relationship="Self.FK_ProcessDefinitions_ProcessSteps" FromRole="ProcessSteps" ToRole="ProcessDefinitions" />
+        </EntityType>
+        <Association Name="FK_ProcessDefinitions_Processes">
+          <End Role="Processes" Type="Self.Process" Multiplicity="1" />
+          <End Role="ProcessDefinitions" Type="Self.ProcessDefinition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Processes">
+              <PropertyRef Name="ProcessId" />
+            </Principal>
+            <Dependent Role="ProcessDefinitions">
+              <PropertyRef Name="ProcessId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProcessDefinitions_ProcessSteps">
+          <End Role="ProcessSteps" Type="Self.ProcessStep" Multiplicity="1" />
+          <End Role="ProcessDefinitions" Type="Self.ProcessDefinition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProcessSteps">
+              <PropertyRef Name="StepId" />
+            </Principal>
+            <Dependent Role="ProcessDefinitions">
+              <PropertyRef Name="StepId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EntityModelCommon" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Faults" EntityType="Self.Fault" />
+          <EntitySet Name="ProcessDefinitions" EntityType="Self.ProcessDefinition" />
+          <EntitySet Name="Processes" EntityType="Self.Process" />
+          <EntitySet Name="ProcessFlows" EntityType="Self.ProcessFlow" />
+          <EntitySet Name="ProcessFlowBUs" EntityType="Self.ProcessFlowBU" />
+          <EntitySet Name="ProcessSteps" EntityType="Self.ProcessStep" />
+          <AssociationSet Name="FK_ProcessDefinitions_Processes" Association="Self.FK_ProcessDefinitions_Processes">
+            <End Role="Processes" EntitySet="Processes" />
+            <End Role="ProcessDefinitions" EntitySet="ProcessDefinitions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProcessDefinitions_ProcessSteps" Association="Self.FK_ProcessDefinitions_ProcessSteps">
+            <End Role="ProcessSteps" EntitySet="ProcessSteps" />
+            <End Role="ProcessDefinitions" EntitySet="ProcessDefinitions" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WorkflowAdminDbModelStoreContainer" CdmEntityContainer="EntityModelCommon">
+          <EntitySetMapping Name="Faults">
+            <EntityTypeMapping TypeName="WorkflowAdminDbModel.Fault">
+              <MappingFragment StoreEntitySet="Faults">
+                <ScalarProperty Name="FaultId" ColumnName="FaultId" />
+                <ScalarProperty Name="ErrorType" ColumnName="ErrorType" />
+                <ScalarProperty Name="Entity" ColumnName="Entity" />
+                <ScalarProperty Name="EntityId" ColumnName="EntityId" />
+                <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+                <ScalarProperty Name="ErrorDetails" ColumnName="ErrorDetails" />
+                <ScalarProperty Name="ErrorDate" ColumnName="ErrorDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProcessDefinitions">
+            <EntityTypeMapping TypeName="WorkflowAdminDbModel.ProcessDefinition">
+              <MappingFragment StoreEntitySet="ProcessDefinitions">
+                <ScalarProperty Name="ProcessId" ColumnName="ProcessId" />
+                <ScalarProperty Name="StepId" ColumnName="StepId" />
+                <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Notification" ColumnName="Notification" />
+                <ScalarProperty Name="IsLastStep" ColumnName="IsLastStep" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Processes">
+            <EntityTypeMapping TypeName="WorkflowAdminDbModel.Process">
+              <MappingFragment StoreEntitySet="Processes">
+                <ScalarProperty Name="ProcessId" ColumnName="ProcessId" />
+                <ScalarProperty Name="SourceSystem" ColumnName="SourceSystem" />
+                <ScalarProperty Name="MessageType" ColumnName="MessageType" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ResolveProcess" ColumnName="ResolveProcess" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProcessFlows">
+            <EntityTypeMapping TypeName="WorkflowAdminDbModel.ProcessFlow">
+              <MappingFragment StoreEntitySet="ProcessFlow">
+                <ScalarProperty Name="SequenceId" ColumnName="SequenceId" />
+                <ScalarProperty Name="Entity" ColumnName="Entity" />
+                <ScalarProperty Name="EntityId" ColumnName="EntityId" />
+                <ScalarProperty Name="ProcessId" ColumnName="ProcessId" />
+                <ScalarProperty Name="StepId" ColumnName="StepId" />
+                <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Notification" ColumnName="Notification" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="IsLastStep" ColumnName="IsLastStep" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProcessFlowBUs">
+            <EntityTypeMapping TypeName="WorkflowAdminDbModel.ProcessFlowBU">
+              <MappingFragment StoreEntitySet="ProcessFlowBU">
+                <ScalarProperty Name="SequenceId" ColumnName="SequenceId" />
+                <ScalarProperty Name="Entity" ColumnName="Entity" />
+                <ScalarProperty Name="EntityId" ColumnName="EntityId" />
+                <ScalarProperty Name="ProcessId" ColumnName="ProcessId" />
+                <ScalarProperty Name="StepId" ColumnName="StepId" />
+                <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Notification" ColumnName="Notification" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="IsLastStep" ColumnName="IsLastStep" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProcessSteps">
+            <EntityTypeMapping TypeName="WorkflowAdminDbModel.ProcessStep">
+              <MappingFragment StoreEntitySet="ProcessSteps">
+                <ScalarProperty Name="StepId" ColumnName="StepId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
