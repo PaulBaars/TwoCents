@@ -59,3 +59,5 @@ C:\GitHub.TwoCents\TwoCents\Calculator\CalculatorService\bin\System.IdentityMode
 C:\GitHub.TwoCents\TwoCents\Calculator\CalculatorService\obj\Debug\CalculatorService.csprojResolveAssemblyReference.cache
 C:\GitHub.TwoCents\TwoCents\Calculator\CalculatorService\obj\Debug\CalculatorService.dll
 C:\GitHub.TwoCents\TwoCents\Calculator\CalculatorService\obj\Debug\CalculatorService.pdb
+C:\GitHub.TwoCents\TwoCents\Calculator\CalculatorService\bin\Swashbuckle.Core.dll
+C:\GitHub.TwoCents\TwoCents\Calculator\CalculatorService\bin\WebActivatorEx.dll
