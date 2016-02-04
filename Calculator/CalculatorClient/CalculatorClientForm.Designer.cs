@@ -62,6 +62,7 @@
             this.Name = "CalculatorClient";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CalculatorClient";
+            this.Load += new System.EventHandler(this.CalculatorClient_Load);
             this.ResumeLayout(false);
 
         }
