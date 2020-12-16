@@ -1,9 +1,0 @@
-C:\GitHub.TwoCents\TwoCents-AzureWorkflow\TwoCents.Azure.Edmx\TwoCents.Azure.Edmx.Common\bin\Debug\TwoCents.Azure.Edmx.Common.dll.config
-C:\GitHub.TwoCents\TwoCents-AzureWorkflow\TwoCents.Azure.Edmx\TwoCents.Azure.Edmx.Common\bin\Debug\TwoCents.Azure.Edmx.Common.dll
-C:\GitHub.TwoCents\TwoCents-AzureWorkflow\TwoCents.Azure.Edmx\TwoCents.Azure.Edmx.Common\bin\Debug\TwoCents.Azure.Edmx.Common.pdb
-C:\GitHub.TwoCents\TwoCents-AzureWorkflow\TwoCents.Azure.Edmx\TwoCents.Azure.Edmx.Common\bin\Debug\EntityFramework.dll
-C:\GitHub.TwoCents\TwoCents-AzureWorkflow\TwoCents.Azure.Edmx\TwoCents.Azure.Edmx.Common\bin\Debug\EntityFramework.SqlServer.dll
-C:\GitHub.TwoCents\TwoCents-AzureWorkflow\TwoCents.Azure.Edmx\TwoCents.Azure.Edmx.Common\bin\Debug\EntityFramework.xml
-C:\GitHub.TwoCents\TwoCents-AzureWorkflow\TwoCents.Azure.Edmx\TwoCents.Azure.Edmx.Common\bin\Debug\EntityFramework.SqlServer.xml
-C:\GitHub.TwoCents\TwoCents-AzureWorkflow\TwoCents.Azure.Edmx\TwoCents.Azure.Edmx.Common\obj\Debug\TwoCents.Azure.Edmx.Common.dll
-C:\GitHub.TwoCents\TwoCents-AzureWorkflow\TwoCents.Azure.Edmx\TwoCents.Azure.Edmx.Common\obj\Debug\TwoCents.Azure.Edmx.Common.pdb
